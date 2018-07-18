@@ -1,0 +1,13 @@
+
+<view class="model {{isShowModel?'show':'close'}}">
+  <!--弹窗样式可自定义-->
+  <view class="model-pack"> 
+    <view class="model-title">{{ModelTitle}}</view>
+    <view class="model-content"><slot></slot></view>
+    <view class="model-button"> 
+      <button  data-modelid="{{ModelId}}" class="confirm" bindgetuserinfo="_bindGetUserInfo" wx:if='{{isGetUser}}' open-type='getUserInfo'>确定</button>
+      <view data-modelid="{{ModelId}}" class="confirm" bindtap="_confirm" wx:else>确定</view>
+    </view>
+  </view>
+</view>
+ 

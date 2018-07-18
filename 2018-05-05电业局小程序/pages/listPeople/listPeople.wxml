@@ -1,0 +1,20 @@
+<!--pages/listPeople/listPeople.wxml-->
+<view class='ss-list'>
+  <block wx:for='{{UserForProjectList}}' wx:key='index'>
+    <navigator url='../seePersonnelInfo/seePersonnelInfo?id={{item.id}}'>
+      <view class='ss-list-item b-line relative'>
+        <view class='cell-left w60 absolute verticalMiddle  l10'>
+          <text class='fs15 onec lh10 block'>{{item.userName}}</text>
+        </view> 
+        <view class='cell-right ml90 ss-arrow pr30'> 
+          <view class='clearfix'>
+          <view class='right'>
+              <text class='fs15  greenc' wx:if='{{item.jobState==0}}'>在职</text>
+              <text class='fs15  redc' wx:elif='{{item.jobState==1}}'>离职</text> 
+          </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+ </view>

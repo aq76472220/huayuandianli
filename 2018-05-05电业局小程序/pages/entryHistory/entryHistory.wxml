@@ -1,0 +1,32 @@
+<!--pages/entryHistory/entryHistory.wxml-->  
+    <block wx:for='{{pageList1}}'  wx:for-index='idx' wx:key='idx'>
+        <view class='ss-ul-list-item relative b-line ss-entry-item'>
+
+           <view class='img fl mt5'>
+            <image src="{{URL+'/upload/'+item.userPhoto}}"></image>
+          </view> 
+
+          <view class='con ml70'>
+            <!-- 上面 -->
+            <view class='top clearfix'>
+              <text class='tit fs17 onec fl'>{{item.userName}}</text>
+              <text class='tit threec fs12 fr'>{{item.userPosition}}</text>
+            </view>
+
+            <!-- 下面 -->
+            <view class=''>
+                <text class='con block fs14 onec pt5 pb5 pr50'>{{item.userCompany}}</text>
+                <view class='clearfix mt5'>
+                  <text class='time fs12 threec fl'>{{item.userMobile}}</text>
+                  <text class='fs12 threec fr'>{{item.createTimeStr ? item.createTimeStr : item.importTimeStr ? item.importTimeStr :'' }}</text>
+                </view> 
+            </view>
+
+            <!-- 审核 -->
+            <text class='absolute r10 t30 t50 fs12 greenc' wx:if='{{ item.auditType==0}}'>审批通过</text>
+            <text class='absolute r10 t30 t50 fs12 yellowc' wx:if='{{ item.auditType==1}}'>审批中</text> 
+          </view>
+          
+       </view>    
+    </block>
+ 

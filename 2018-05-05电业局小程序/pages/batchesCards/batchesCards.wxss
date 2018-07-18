@@ -1,0 +1,3 @@
+/* pages/batchesCards/batchesCards.wxss */
+.ss-batchesCards-top{height: 40px; line-height: 40px; background: #00a5ff; text-align: center; font-size: 18px; color: #fff;}
+.checkbox text{display: inline-block;line-height: 24px;}

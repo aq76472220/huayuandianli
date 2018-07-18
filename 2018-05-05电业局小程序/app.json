@@ -1,0 +1,24 @@
+{
+  "pages":[
+    "pages/index/index", 
+    "pages/leaveForm/leaveForm", 
+    "pages/seePersonnelInfo/seePersonnelInfo",  
+    "pages/newEmployee/newEmployee",
+    "pages/batchesCards/batchesCards",
+    "pages/examinationApproval/examinationApproval",
+    "pages/entryHistory/entryHistory",
+    "pages/checkAttendance/checkAttendance", 
+    "pages/notice/notice",  
+    "pages/noticeDetail/noticeDetail",
+    "pages/register/register", 
+    "pages/listPeople/listPeople",
+    "pages/personalInformation/personalInformation",
+    "pages/attendanceSheet/attendanceSheet",
+    "pages/buildAttendance/buildAttendance" 
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#00a5ff", 
+    "navigationBarTextStyle":"#fff"
+  }
+}

@@ -1,0 +1,48 @@
+<!--pages/checkAttendance/checkAttendance.wxml-->
+<view class="calendar">
+  <view class="calendar-header "> 
+      <picker value="{{date}}" bindchange="bindPickerChange" fields="month"  mode="date"  start="{{year}}-01-01" end="{{year}}-12-31">
+        <view class="picker fs17 whiteoc">{{dateCN}}</view>
+      </picker> 
+  </view>
+
+  <!-- 星期 -->
+  <view class="week relative b-line">
+    <view wx:for="{{week}}" wx:key="{{item}}" class="week-item">
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 天 -->
+  <view class="month">
+    <view wx:for="{{monthList}}" wx:key="{{item}}" class="month-item relative" data-item="{{item}}">
+        <text class="{{item.type==1 ? 'ss-kq-green': ''}}" wx:if='{{item.type==1}}'> {{item.value=== today?'今':item.num}}</text><!-- 1 正常 -->
+        <text class="{{item.type==2 ? 'ss-kq-grey': ''}}"  wx:elif='{{item.type==2}}'> {{item.value=== today?'今':item.num}}</text><!-- 2 补打卡 -->
+        <text class="{{item.type==3 ? 'ss-kq-yellow': ''}}"  wx:elif='{{item.type==3}}'> {{item.value=== today?'今':item.num}}</text><!-- 3 请假 -->
+        <text class="{{item.type==4 ? 'ss-kq-red': ''}}"  wx:elif='{{item.type==4}}'> {{item.value=== today?'今':item.num}}</text><!-- 4 未打卡 -->
+        <text wx:else> {{item.value=== today?'今':item.num}}</text>
+    </view>
+  </view> 
+</view>
+
+<!-- tip -->
+<view class='ss-calendar-tip relative t-line b-line'>
+  <text class='ss-tip-green fs12 threec mr15'>正常</text>  <!-- 1 正常 -->
+  <text class='ss-tip-grey fs12 threec mr15'>审批通过</text> <!-- 2 补打卡 -->
+  <text class='ss-tip-yellow fs12 threec mr15'>请假</text> <!-- 3 请假 -->
+  <text class='ss-tip-red fs12 threec mr15'>未打卡</text>  <!-- 4 未打卡 -->
+</view>
+
+<view class='ss-list-item mt10 relative t-line b-line'>
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox clearfix">
+      <checkbox class='fl mr5' value="" checked="{{isChecked}}"/> <text class='fs15 onec  block'>选中全部未打卡</text>
+    </label>
+  </checkbox-group>
+</view>
+
+<!-- 按钮 -->
+<view class='ml20 mr20 mt30 mb30'>
+  <button  type="primary" bindtap="submitNotCardListHandle">提交未打卡单</button>
+</view>
+

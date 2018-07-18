@@ -1,0 +1,42 @@
+<!--pages/register/register.wxml-->
+<view class='pl10 pr10 pt10 pb10 ml10 mr10'>
+    <!-- 标题 -->
+    <view class='pt20 pb30'>
+      <text class='fs25 onec block'>个人注册</text>
+      <!-- <text class='fs12 threec'>项目管理人员</text> -->
+    </view>
+    
+    <form bindsubmit="bindRegisterformSubmit">
+        <!-- 输入框 -->
+        <view class='ss-register-inpb'>
+          <view class='b-line relative pt10 pb10 ss-xm'>
+              <input type='text'  placeholder='请输入姓名' class='fs15 onec' bindblur='bindUserNameHandle' name="userName" />
+          </view>
+
+          <view class='b-line relative pt10 pb10 ss-sfz'>
+              <input type='number'  placeholder='请输入你身份证的后四位' maxlength="4" class='fs15 onec' bindblur='bindUserIdcard' name="userIdcard" />
+          </view>
+           
+          <view class='b-line relative pt10 pb10 ss-sj'>
+              <input type='number'  placeholder='请输入手机号' maxlength="11" class='fs15 onec' bindblur='bindMobileNoHandle' name="mobileNo" />
+          </view>
+
+          <view class='b-line relative pt10 pb10 ss-shxm'>
+              <picker class='pr30 ss-arrow' bindchange="bindPickerChange01" value="{{index01}}" range="{{entryArray01}}"> 
+                <view class='placeholderc fs15 h26' wx:if="{{!entryArray01[index01]}}">请选择隶属项目</view> 
+                <view class="picker fs15 h26 ellipsis" wx:else>
+                  {{entryArray01[index01]}}
+                </view>
+              </picker>
+          </view>
+        </view>
+
+        <!-- 按钮 -->
+        <view class='mt30 mb30'>
+          <button  type="primary" formType="submit">注册</button> 
+        </view>
+
+        <!-- <button   open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button> -->
+    </form>
+</view>
+

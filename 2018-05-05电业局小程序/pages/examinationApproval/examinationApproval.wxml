@@ -1,0 +1,100 @@
+<!--pages/examinationApproval/examinationApproval.wxml-->
+<!-- tab -->
+<view class='ss-nav   b-line   ss-flex ss-fixed-top'>
+  <block  wx:for="{{navdata}}" wx:for-index="idx" wx:key="idx">
+    <view  class="center ss-nav-item ss-flex-item {{currentTab==idx ? 'on' : ''}}" data-current="{{idx}}"  bindtap="swichNav">
+      <text class='fs14'>{{item.name}}</text>
+    </view>
+  </block>
+</view>
+
+
+<!-- 01请假条 -->
+<scroll-view scroll-y bindscrolltolower="loadingMore1" class="pt40   {{currentTab==0 ? '' : 'hidden'}}" style='height:{{height-40}}px'> 
+    <block wx:for='{{pageList1}}'  wx:for-index='idx' wx:key='idx'>
+        <view class='ss-ul-list-item relative b-line'>
+            <!-- 上面 -->
+            <view class='top clearfix'>
+              <text class='tit fs17 onec fl'>{{item.userName}}</text> <!-- 用户名称 -->
+              <text class='tit threec fs12 fr'>{{item.applyDateStr}}</text> <!-- 申请日期 -->
+            </view>
+
+            <!-- 下面 -->
+            <view class=''>
+                <text class='con block fs14 onec pt5 pb5'>{{item.remark}}</text> <!-- 说明 -->
+                <text class='time fs12 threec'>{{item.startDateStr}} 至 {{item.endDateStr}}</text>
+            </view>
+
+            <!-- 状态或者按钮 -->
+            <!-- 普通人员 -->
+            <view class='absolute r10 b40' wx:if='{{userType==2}}'> 
+              <text class='fs12 yellowc' wx:if='{{item.state==0}}'>待{{item.approvalUserName}}审批</text>
+              <text class='fs12 greenc' wx:if='{{item.state==1}}'>{{item.approvalUserName}}已通过</text>
+              <text class='fs12 redc' wx:if='{{item.state==2}}'>{{item.approvalUserName}}未通过</text>
+            </view>
+
+            <!-- 管理人员 -->
+            <view  wx:if='{{userType==3}}'>
+              <button wx:if='{{item.state==0}}' type='primary' size='mini' class='absolute r10 b30' data-idx='{{idx}}' data-id='{{item.id}}' data-userId='{{item.userId}}'  bindtap='agreeLeaveHandle'>同意</button>
+              <text class='' wx:if='{{item.state==1}}' class='absolute r10 b40 fs12 greenc'>已同意</text> 
+            </view>
+        </view>   
+    </block>
+
+    <!-- 加载更过的提示 -->
+    <view class="loading-tip">
+        <view wx:if="{{hasMore}}">
+            <image src="../../assets/loading.gif" mode="aspectFill"/>
+            <text>玩了命的加载中...</text>
+        </view>
+        <view wx:else><text>没有更多内容了</text></view>
+    </view>
+
+</scroll-view>
+
+<!-- 02未打卡单 -->
+<scroll-view scroll-y bindscrolltolower="loadingMore2" class="pt40  {{currentTab==1 ? '' : 'hidden'}}" style='height:{{height-40}}px'>
+ 
+    <block wx:for='{{pageList2}}'  wx:for-index='idx' wx:key='idx'>
+        <view class='ss-ul-list-item relative b-line'>
+            <!-- 上面 -->
+            <view class='top clearfix'>
+              <text class='tit fs17 onec fl'>{{item.userName}}</text> <!-- 用户名称 -->
+              <text class='tit threec fs12 fr'>{{item.applyDateStr}}</text><!-- 申请日期 -->
+            </view>
+
+            <!-- 下面 -->
+            <view class=''>
+                <text class='con block fs14 onec pt5 pb5 pr60'>{{item.noClockDates}}</text> <!-- 说明 -->
+            </view>
+
+         
+
+            <!-- 状态或者按钮 -->
+            <!-- 普通人员 -->
+            <view class='absolute r10 b20' wx:if='{{userType==2}}'> 
+              <text class='fs12 yellowc' wx:if='{{item.state==0}}'>待{{item.approvalUserName}}审批</text>
+              <text class='fs12 greenc' wx:if='{{item.state==1}}'>{{item.approvalUserName}}已通过</text>
+              <text class='fs12 redc' wx:if='{{item.state==2}}'>{{item.approvalUserName}}未通过</text>
+            </view>
+
+            <!-- 管理人员 -->
+            <view  wx:if='{{userType==3}}'>
+              <button wx:if='{{item.state==0}}' type='primary' size='mini' class='absolute r10 b10' data-idx='{{idx}}' data-id='{{item.id}}' data-userId='{{item.userId}}'  bindtap='agreePunchHandle'>同意</button>
+              <text class='' wx:if='{{item.state==1}}' class='absolute r10 b20 fs12 greenc'>已同意</text> 
+            </view>
+
+
+        </view>   
+    </block>
+
+    <!-- 加载更过的提示 -->
+    <view class="loading-tip">
+        <view wx:if="{{hasMore}}">
+            <image src="../../assets/loading.gif" mode="aspectFill"/>
+            <text>玩了命的加载中...</text>
+        </view>
+        <view wx:else><text>没有更多内容了</text></view>
+    </view>
+ 
+</scroll-view> 

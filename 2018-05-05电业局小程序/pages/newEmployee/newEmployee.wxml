@@ -1,0 +1,195 @@
+<!--pages/newEmployee/newEmployee.wxml-->
+<form bindsubmit="formSubmit" method="post">
+  <view class='ss-list relative mt10 t-line'>
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>姓名 <text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='text' placeholder='请输入姓名' name='userName'></input>
+      </view>
+    </view>
+
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>记录码<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='text' placeholder='请输入记录码' name='recordCode'></input>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>联系电话<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='number' maxlength='11' placeholder='请输入联系电话' name='userMobile'></input>
+      </view>
+    </view> 
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>保险状态</text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='text' placeholder='请输入保险状态' name='userInsurancestatus'></input>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>身份证<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='text' placeholder='请输入身份证' name='userIdcard'></input>
+      </view>
+    </view>
+     
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>职务<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker bindchange="bindPickerChange00" value="{{index00}}" range="{{entryArray00}}"> 
+          <view class='placeholderc fs15 h26' wx:if="{{!entryArray00[index00]}}">请选择职务</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{entryArray00[index00]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>安规成绩<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90'>
+        <input class='fs15 onec' type='text' placeholder='请输入安规成绩' name='userSafeperformance'></input>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>安规考试时间</text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker mode="date" value="{{date02}}" start="1990-01-01" end="2030-12-31" bindchange="bindDateChange01"> 
+          <view class='placeholderc fs15 h26' wx:if="{{date01==0}}">请选择体安规考试时间</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{date01}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>体检时间</text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker mode="date" value="{{date02}}" start="1990-01-01" end="2030-12-31" bindchange="bindDateChange02"> 
+          <view class='placeholderc fs15 h26' wx:if="{{date02==0}}">请选择考试时间</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{date02}}
+          </view>
+        </picker>
+      </view>
+    </view> 
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>体检结果</text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker bindchange="bindPickerChange01" value="{{index01}}" range="{{entryArray01}}"> 
+          <view class='placeholderc fs15 h26' wx:if="{{!entryArray01[index01]}}">请选择体检结果</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{entryArray01[index01]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>隶属分包公司<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker bindchange="bindPickerChange02" value="{{index02}}" range="{{entryArray02}}"> 
+          <view class='placeholderc fs15 h26' wx:if="{{!entryArray02[index02]}}">请选择隶属分包公司</view> 
+          <view class="picker fs15 h26 ellipsis" wx:else>
+            {{entryArray02[index02]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class='ss-list-item b-line  relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>隶属项目<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker bindchange="bindPickerChange03" value="{{index03}}" range="{{entryArray03}}"> 
+          <view class='placeholderc fs15 h26' wx:if="{{!entryArray03[index03]}}">请选择隶属项目</view> 
+          <view class="picker fs15 h26 ellipsis" wx:else>
+            {{entryArray03[index03]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+ 
+
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>工种/岗位<text class='redc'>*</text></text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'>
+        <picker bindchange="bindPickerChange04" value="{{index04}}" range="{{entryArray04}}"> 
+          <view class='placeholderc fs15 h26' wx:if="{{!entryArray04[index04]}}">请选择工种/岗位</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{entryArray04[index04]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+ 
+
+    <!-- 图片上传 -->
+    <view class='ss-list-item b-line t-line relative ss-upload-img-list-box mt10 mb10 clearfix'> 
+      <view class='ss-upload-img-list fl mr10'>
+         <view class='ss-upload-img-list-btn' wx:if='{{!isPhotoUrl}}' bindtap='bindUploadImg'>
+            
+         </view>
+
+         <view wx:else class='ss-upload-img-list-preview relative'>
+            <image  src='{{isPhotoUrl}}' mode='aspectFill' />
+            <text>{{uploadPhotoFont}}</text>
+         </view>
+
+      </view>
+
+      <view class='ss-upload-img-list-font fs13 onec'>上传照片附件<text class='redc'>*</text></view>
+    </view>
+
+
+  </view>
+
+
+  <!-- 按钮 -->
+  <view class='ml10 mr10 mt30 mb30'>
+    <button  type="primary" formType="submit">提交</button>
+  </view>
+
+</form>
+
+
+<!-- 记录按钮 -->
+<view class='ss-mbottom-btn center pb30'>
+    <navigator url='../entryHistory/entryHistory' hover-class="none"><!-- 跳转历史记录-->
+      <text class='fs12 three'>历史记录</text>
+    </navigator>
+</view>
+

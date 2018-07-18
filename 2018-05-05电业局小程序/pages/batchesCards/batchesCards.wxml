@@ -1,0 +1,38 @@
+<!--pages/batchesCards/batchesCards.wxml-->
+<view class='ss-batchesCards-top'>{{currentDayTime}}</view>
+
+<!-- 表单列表 -->
+ 
+    <view class='relative t-line  mt10 pb60'>
+     <block wx:for='{{checkboxList}}' wx:key='index'>
+        <view class='ss-list-item  relative b-line' data-idx='{{index}}' bindtap='bindItemCheckHandle'> 
+            <label class="checkbox clearfix">
+              <checkbox class='fl mr10' value="{{item.userName}}" checked="{{item.isChecked}}"/> <text class='fs15 onec  block'>{{item.userName}}</text>
+            </label> 
+        </view>
+      </block>
+    </view> 
+ 
+<!-- 底部 -->
+<view class='ss-fixed-bottom pl10 pr10'>
+  <label class="checkbox fl mt10" bindtap='bindAllCheckHandle'>
+    <checkbox class='fl mr10' value="" checked='{{isAllCheck}}' /> <text class='fs12 threec  block ellipsis'>全选  共<text class='fs15 yellowc'>{{checkedLength}}</text>人</text>
+  </label> 
+
+    <button type='primary' class='w140 fr' bindtap='bindPunchHandle'>批量打卡</button>
+</view>
+
+
+<!-- 模态框 -->
+<model isShowModel='{{isShowModel}}' ModelId='0' bindIsShowHandle='IsShowHandle'>
+  <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
+    <view class='ss-index-punch'>
+      <view class='tit pt10 center'>
+        <icon type='success' size='60' class='block middle mb5'></icon>
+        <text class='onec fs18 center'> 批量打卡成功</text>
+      </view>
+      <view class='con mt10 mb10 center'>
+        <view>今日签到人数 <text class='redc'>{{checkedLength}}</text>人</view> 
+      </view>
+    </view> 
+</model>

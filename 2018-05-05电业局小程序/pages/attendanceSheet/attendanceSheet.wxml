@@ -1,0 +1,38 @@
+<!--pages/attendanceSheet/attendanceSheet.wxml-->
+<!-- 日期选择 -->
+<view class='ss-flex ss-attendance-top b-line ss-fixed-top'>
+    <text class='twoc pr10'>时间段</text>
+    <picker class='ss-picker-box mr15' mode="date" value="{{date01}}" fields='month' start="1990-01" end="2030-12" bindchange="bindDateChange01">
+      <view class="picker">
+        {{date01}}
+      </view>
+    </picker> 
+</view>
+
+<!-- 表单列表 -->
+ 
+  <view class='relative t-line  mt50 pb60'>
+    <block wx:for='{{checkboxList}}' wx:key='index'>
+      <view class='ss-list-item  relative b-line' data-idx='{{index}}' bindtap='bindItemCheckHandle'> 
+          <label class="checkbox clearfix">
+            <checkbox class='fl mr10' value="{{item.id}}" checked="{{item.isChecked}}"/> <text class='fs15 onec  block'>{{item.userName}}</text>
+          </label> 
+      </view>
+    </block>
+  </view> 
+ 
+
+<!-- 底部 -->
+<!-- <view class='ss-fixed-bottom'> 
+    <button type='primary' bindtap='makeAttendanceHandle'>生成考勤表</button> 
+</view> -->
+
+
+<!-- 底部 -->
+<view class='ss-fixed-bottom pl10 pr10'>
+  <label class="checkbox fl mt10" bindtap='bindAllCheckHandle'>
+    <checkbox class='fl mr10' value="" checked='{{isAllCheck}}' /> <text class='fs12 threec  block ellipsis'>全选  共<text class='fs15 yellowc'>{{checkedLength}}</text>人</text>
+  </label> 
+
+    <button type='primary' class='w140 fr' bindtap='makeAttendanceHandle'>生成考勤表</button>
+</view>

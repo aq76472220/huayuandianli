@@ -1,0 +1,160 @@
+<!--pages/personalInformation/personalInformation.wxml-->
+
+<view>
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>姓名</text>
+        <text class='fs15 threec fr'>{{UserDetail.userName}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>人员类型</text>
+        <text class='fs15 threec fr'>{{UserDetail.personnelType}}</text>
+      </view>
+  </view> 
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>民族</text>
+        <text class='fs15 threec fr'>{{UserDetail.national}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>联系人</text>
+        <text class='fs15 threec fr'>{{UserDetail.contact}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>体检结果</text>
+        <text class='fs15 threec fr'>{{UserDetail.medicalResult}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>体检时间</text>
+        <text class='fs15 threec fr'>{{UserDetail.medicalTimeStr}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>安规考试时间</text>
+        <text class='fs15 threec fr'>{{UserDetail.userSafeTimeStr}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>记录码</text>
+        <text class='fs15 threec fr'>{{UserDetail.recordCode}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>在职状态</text>
+        <text class='fs15 greenc fr' wx:if='{{UserDetail.jobState==0}}'>在职</text>
+        <text class='fs15 redc fr' wx:elif='{{UserDetail.jobState==1}}'>离职</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>职务</text>
+        <text class='fs15 threec fr'>{{UserDetail.userPosition}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>手机号</text>
+        <text class='fs15 threec fr'>{{UserDetail.userMobile}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>身份证</text>
+        <text class='fs15 threec fr'>{{UserDetail.userIdcard}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>工种</text>
+        <text class='fs15 threec fr'>{{UserDetail.userWorktype}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>备注</text>
+        <text class='fs15 threec fr'>{{UserDetail.userRemark}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>隶属分包公司</text>
+        <text class='fs15 threec fr'>{{UserDetail.userCompany}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>安规成绩</text>
+        <text class='fs15 threec fr'>{{UserDetail.userSafeperformance}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>保险状态</text>
+        <text class='fs15 threec fr'>{{UserDetail.userInsurancestatus}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl absolute'>项目名称</text>
+        <text class='fs15 threec fr pl80 right'>{{UserDetail.userProject}}</text>
+      </view>
+  </view>
+
+  <view class='ss-list-item  relative b-line'>
+      <view class='clearfix'>
+        <text class='fs15 onec fl'>用户类别</text>
+        <text class='fs15 threec fr' wx:if='{{UserDetail.userType==1}}'>总部人员</text>
+        <text class='fs15 threec fr' wx:elif='{{UserDetail.userType==2}}'>作业人员</text>
+        <text class='fs15 threec fr' wx:elif='{{UserDetail.userType==3}}'>项目管理员</text> 
+      </view>
+  </view>
+
+
+
+
+ 
+</view>
+
+<view class="mt20 pb30 ss-row ml10 mr10 {{userType==3 ? 'hidden':''}}">
+  <view class='ss-col-12'>
+      <!-- 查看考勤 -->
+     <navigator url='../checkAttendance/checkAttendance?userId={{userId}}'>
+      <button type="primary"  class='mr5'>查看考勤</button>
+     </navigator>
+  </view>
+
+  <!-- <view class='ss-col-6'> -->
+     <!-- 请假单 -->
+     <!-- <navigator url='../leaveForm/leaveForm?userId={{userId}}'>
+      <button type="primary"  class='ml5'>请假单</button>
+     </navigator>
+  </view> -->
+</view>

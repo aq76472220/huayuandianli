@@ -1,0 +1,11 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+
+<view class='pl20 pr20 pt10 pb10 ss-notice-box'> 
+
+     <text class='tit fs20 bold block onec'>{{title}}</text>
+    <text class='time fs12 threec block pt10 pb10'>{{startDate}}</text> 
+
+    <view class='con fs15 lh18 onec'>
+        <text>{{noticeBody}}</text>
+    </view>
+</view>

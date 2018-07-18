@@ -1,0 +1,64 @@
+<!--pages/leaveForm/leaveForm.wxml-->
+<form bindsubmit="bindSubmissionLeave">
+  <view class='ss-list'>
+    <!-- 开始时间 -->
+    <view class='ss-list-item b-line relative'>
+      <view class='cell-left w80 absolute verticalMiddle  l10'>
+        <text class='fs15 onec lh10 block'>开始时间</text>
+      </view> 
+      <view class='cell-right ml90 ss-arrow pr30'> 
+
+      <picker mode="multiSelector" value="{{dateTime}}"  bindchange="changeDateTimeColumn00" bindcolumnchange="changeDateTimeColumn00" range="{{dateTimeArray}}">
+        <view>
+          <view class='placeholderc fs15 h26' wx:if="{{!currentDate00}}">请选择时间</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{currentDate00}}
+          </view> 
+        </view>
+      </picker>
+  
+      </view>
+    </view>
+
+    <!-- 结束时间 -->
+    <view class='ss-list-item b-line relative'>
+    <view class='cell-left w80 absolute verticalMiddle  l10'>
+      <text class='fs15 onec lh10 block'>结束时间</text>
+    </view> 
+    <view class='cell-right ml90 ss-arrow pr30'>
+      <picker mode="multiSelector" value="{{dateTime}}"  bindchange="changeDateTimeColumn01" bindcolumnchange="changeDateTimeColumn01" range="{{dateTimeArray}}">
+        <view>
+          <view class='placeholderc fs15 h26' wx:if="{{!currentDate01}}">请选择时间</view> 
+          <view class="picker fs15 h26" wx:else>
+            {{currentDate01}}
+          </view> 
+        </view>
+      </picker>
+    </view>
+    </view>
+    </view>
+    
+      <!-- 请假事由 -->
+    <view class='ss-list-item b-line relative'>
+    <view class='cell-left w80 absolute t12  l10'>
+      <text class='fs15 onec lh10 block'>请假事由</text>
+    </view> 
+    <view class='cell-right ml90 '>
+        <textarea class='fs15 ss-textarea' name='reasonLeave' placeholder="请输入你想说的"  /> 
+    </view>
+    </view>
+
+    <!-- 按钮 -->
+    <view class='ml20 mr20 mt30 mb30'>
+      <button  type="primary" formType="submit">提交</button>
+    </view>
+
+  </form>
+
+  <!-- 历史记录 -->
+  <view class='ss-mbottom-btn center'>
+    <navigator hover-class='none' url='../examinationApproval/examinationApproval'>
+      <text class='fs12'>历史记录</text>
+    </navigator>
+  </view>
+

@@ -1,0 +1,4 @@
+/* pages/entryHistory/entryHistory.wxss */
+.ss-entry-item .img{width: 60px; height: 60px; border-radius: 100px; background: #eee; overflow: hidden}
+.ss-entry-item .img image{display: block; width: 60px; height: 60px; border-radius: 100px;}
+.ss-entry-item .con .top{height: 30px;}

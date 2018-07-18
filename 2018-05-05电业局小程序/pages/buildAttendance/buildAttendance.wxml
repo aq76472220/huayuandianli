@@ -1,0 +1,48 @@
+<!--pages/buildAttendance/buildAttendance.wxml-->
+
+<view class="ss-flex ss-attendance-top b-line ss-fixed-top {{userType==3? 'hidden':''}}">
+    <text class='twoc pr10'>时间段</text>
+    <picker class='ss-picker-box mr15' mode="date" value="{{date01}}" fields='month' start="1990-01" end="2030-12" bindchange="bindDateChange01">
+      <view class="picker">
+        {{date01}}
+      </view>
+    </picker> 
+</view>
+
+<!-- tip -->
+<view class="ss-calendar-tip relative mb10 b-line ss-fixed-top  {{userType==3? '':'t40'}}">
+  <text class='ss-tip-green fs12 threec mr15 ml5'>正常</text> 
+  <text class='ss-tip-grey fs12 threec mr15'>审批通过</text>  
+  <text class='ss-tip-yellow fs12 threec mr15'>请假</text>
+  <text class='ss-tip-red fs12 threec mr15'>未打卡</text> 
+</view>
+
+<view class="ss-generate-box  {{userType==3? 'pt40':'pt80'}}"> 
+  <block wx:for='{{pageList01}}' wx:key='index'>
+    <view class='ss-generate-item relative t-line b-line mb10'> 
+        <view class='ss-generate-item-tit clearfix'>
+          <text class='fs15 onec fl'>{{item.userName}}</text> 
+        </view> 
+ 
+          <view class='ss-generate-item-con relative t-line'>
+              <view class='ss-d-item scroll-box relactive'>
+                  <view class='ss-d-item-left fl'>{{currentMonth}}月</view> 
+                  <view class='ss-d-item-ul scroll-box-list clearfix'>
+                      <block wx:for='{{item.list}}' wx:key='index'>
+                        <view class='ss-d-item-li info-love' wx:if='{{item.state==1}}'><text class='ss-kq-green'>{{index+1}}</text></view>
+                        <view class='ss-d-item-li info-love' wx:elif='{{item.state==2}}'><text class='ss-kq-grey'>{{index+1}}</text></view>
+                        <view class='ss-d-item-li info-love' wx:elif='{{item.state==3}}'><text class='ss-kq-yellow'>{{index+1}}</text></view>
+                        <view class='ss-d-item-li info-love' wx:elif='{{item.state==4}}'><text class='ss-kq-red'>{{index+1}}</text></view>
+                        <view class='ss-d-item-li info-love' wx:else><text>{{index+1}}</text></view>
+                      </block>
+                  </view>
+              </view>
+          </view> 
+      
+ 
+    </view>
+  </block> 
+</view>
+
+ 
+

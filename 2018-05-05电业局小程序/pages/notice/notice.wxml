@@ -1,0 +1,26 @@
+<!--pages/notice/notice.wxml-->
+ 
+<!-- 通知公告 -->
+<scroll-view scroll-y bindscrolltolower="loadingMore1" class="page_list"> 
+    <block wx:for='{{pageList1}}'  wx:for-index='idx' wx:key='idx'>
+      <navigator url='../noticeDetail/noticeDetail'>
+        <view class='ss-ul-list-item relative b-line'> 
+            <view class='clearfix'>
+              <text class='fs15 onec ellipsis block pb5'>这是标题这是标题这是标题这是标题这是标题这是标题</text> 
+              <text class='fs12 twoc ellipsisTwo h32'> 这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容</text>
+              <text class='fs12 threec block pt5'>2018-05-04</text>
+            </view> 
+          </view>
+        </navigator>  
+    </block>
+
+    <!-- 加载更过的提示 -->
+    <view class="loading-tip">
+        <view wx:if="{{hasMore}}">
+            <image src="../../assets/loading.gif" mode="aspectFill"/>
+            <text>玩了命的加载中...</text>
+        </view>
+        <view wx:else><text>没有更多内容了</text></view>
+    </view>
+
+</scroll-view>

@@ -1,0 +1,160 @@
+<!--pages/index/index.wxml-->
+
+<!-- banner -->
+<view class='ss-index-banner relative'>
+  <text class='absolute r0 mr10 mt5 fs20 whiteoc'>{{currentTime}}</text>
+
+  <view class='ss-index-banner-top clearfix'>
+    <view class='img fl mr10'>
+      <image src='{{avatarUrl}}'></image>
+    </view>
+     <view class='font'>
+        <text class='font-01 block fs17 whiteoc pt5 ' wx:if='{{userName}}'>{{userName}}</text>
+        <text class='font-01 block fs17 whiteoc pt5 ' wx:else>未注册</text>
+        <text class='font-02 block fs13 whitetc'>职位：{{userPosition}}</text>
+     </view>
+  </view> 
+  <text class='block whitetc fs16 mt10'>{{userCompany}}</text>
+</view>
+
+<!-- 公告 -->
+<view class='swiper-adv-box relative b-line'>
+  <view class='swiper-adv-licon absolute verticalMiddle l10'>
+    <image src='../../assets/ss-addicon.png'></image>
+  </view>
+  <swiper class="swiper-adv" vertical="true" autoplay="true" circular="true" interval="4000">
+    <block wx:for="{{msgList}}" wx:for-index='idx' wx:key='idx'>
+       <navigator url="../noticeDetail/noticeDetail?title={{item.title}}&startDate={{item.startDate}}&noticeBody={{item.noticeBody}}"> 
+        <swiper-item class='swiper-adv-item'>
+          <view class=" fs14 onec ellipsis pr20">{{item.title}}</view>
+        </swiper-item>
+       </navigator> 
+    </block>
+  </swiper>
+ 
+  <text class='absolute verticalMiddle r10 fs14 threec  swiper-adv-font'></text>
+ 
+</view>
+
+<!-- 菜单 -->
+<view class='ss-index-menu-box ss-row'> 
+
+  <!-- 01打卡(个人/管理员) -->
+  <view class='ss-index-menu-item ss-col-4 r-line b-line relative'>
+    <view class='con center pt5'>
+      <view class='img' bindtap='punchHandle'>
+        <image src='../../assets/menu01.png'></image>
+      </view>
+      <text class='fs13 onec pt5 block ellipsis'>打卡</text> 
+    </view>
+  </view>
+
+   <!-- 02跳转注册(个人/管理员) -->
+  <view class='ss-index-menu-item ss-col-4 r-line b-line relative'>
+    <view class='con center pt5'> 
+        <view class='img' bindtap='registerHandle'>
+          <image src='../../assets/menu02.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>注册</text>
+      
+    </view>
+  </view>
+
+  <!-- 03审批(个人/管理员) -->
+  <view class='ss-index-menu-item ss-col-4 r-line b-line relative'>
+    <view class='con center pt5'> 
+        <view class='img' bindtap='approvalHandle'> 
+          <image src='../../assets/menu03.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>审批</text>
+      
+    </view>
+  </view>
+
+  <!-- 04考勤表(个人/管理员) -->
+  <view class='ss-index-menu-item ss-col-4 r-line b-line relative'>
+    <view class='con center pt5'> 
+        <view class='img' bindtap='attendanceHandle'>
+          <image src='../../assets/menu04.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>考勤表</text>
+      
+    </view>
+  </view>
+
+  <!-- 05人员一览(管理员) -->
+  <view class="ss-index-menu-item ss-col-4 r-line b-line relative {{userType==2 ? 'hidden':''}}">
+    <view class='con center pt5'> 
+        <view class='img' bindtap='personLookHandle'>
+          <image src='../../assets/menu05.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>人员一览</text> 
+    </view>
+  </view>
+
+  <!-- 06员工入职 (管理员)-->
+  <view class="ss-index-menu-item ss-col-4 r-line b-line relative {{userType==2 ? 'hidden':''}}">
+    <view class='con center pt5'> 
+        <view class='img' bindtap='entryHandle'>
+          <image src='../../assets/menu06.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>员工入职</text>
+      
+    </view>
+  </view> 
+
+  <!-- 07请假单 (个人)-->
+  <view class="ss-index-menu-item ss-col-4 r-line b-line relative {{userType==''||userType==3  ? 'hidden':''}}">
+    <view class='con center pt5'> 
+        <view class='img' bindtap='leaveHandle'>
+          <image src='../../assets/menu07.png'></image>
+        </view> 
+      <text class='fs13 onec pt5 block ellipsis'>请假单</text>
+      
+    </view>
+  </view> 
+
+   
+</view>
+
+<!-- 个人信息(个人/管理员)--> 
+<view class='ss-index-smbtn mt30 mb10' bindtap='inforHandle'>
+  <text>个人信息</text>
+</view> 
+
+<view class='ss-index-logo'>
+    <image src='../../assets/logo.png'></image>
+</view>
+
+ 
+<!-- 打卡签到模态框 -->
+<model isShowModel='{{isShowModel01}}' ModelId='0' bindIsShowHandle='IsShowHandle'>
+  <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
+    <view class='ss-index-punch'>
+      <view class='tit pt15'>
+        <text class='onec fs18'> 打卡成功</text>
+      </view>
+      <view class='con mt20 mb10'>
+        <view>
+          <view>{{currentTimeFixed}}</view>
+        </view> 
+        <text class='block center fs12 threec pt10 pl10 pr10'>定位：{{locationAddress}}</text>
+      </view>
+    </view> 
+</model>
+
+
+<!-- 获取用户信息 -->
+<model isShowModel='{{isShowModel02}}' isGetUser='false' ModelId='1' bindbindGetUserInfo='getUserInfoHandle'>
+  <!-- 这部分内容将被放置在组件 <slot> 的位置上 -->
+    <view class=' pb10'>
+      <view class='tit pt15'>
+        <text class='onec fs16 block center'> 获取用户信息</text>
+      </view>
+     
+    </view> 
+</model>
+
+
+
+ 
